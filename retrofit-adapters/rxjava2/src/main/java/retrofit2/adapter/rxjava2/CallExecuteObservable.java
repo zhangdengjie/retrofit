@@ -57,7 +57,8 @@ final class CallExecuteObservable<T> extends Observable<Response<T>> {
         RxJavaPlugins.onError(t);
       } else if (!disposable.isDisposed()) {
         try {
-          observer.onError(t);
+          Rxjava2AdapterThrowable throwable = new Rxjava2AdapterThrowable(call,t);
+          observer.onError(throwable);
         } catch (Throwable inner) {
           Exceptions.throwIfFatal(inner);
           RxJavaPlugins.onError(new CompositeException(t, inner));
