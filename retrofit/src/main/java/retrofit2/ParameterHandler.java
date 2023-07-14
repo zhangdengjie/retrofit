@@ -298,6 +298,11 @@ abstract class ParameterHandler<T> {
       this.encoded = encoded;
     }
 
+    /**
+     * 跳过key|value|converted value为空的值
+     * 不添加到表单中,而不是直接报错
+     * @throws IOException
+     */
     @Override
     void apply(RequestBuilder builder, @Nullable Map<String, T> value) throws IOException {
       if (value == null) {
@@ -307,26 +312,16 @@ abstract class ParameterHandler<T> {
       for (Map.Entry<String, T> entry : value.entrySet()) {
         String entryKey = entry.getKey();
         if (entryKey == null) {
-          throw Utils.parameterError(method, p, "Field map contained null key.");
+          continue;
         }
         T entryValue = entry.getValue();
         if (entryValue == null) {
-          throw Utils.parameterError(
-              method, p, "Field map contained null value for key '" + entryKey + "'.");
+          continue;
         }
 
         String fieldEntry = valueConverter.convert(entryValue);
         if (fieldEntry == null) {
-          throw Utils.parameterError(
-              method,
-              p,
-              "Field map value '"
-                  + entryValue
-                  + "' converted to null by "
-                  + valueConverter.getClass().getName()
-                  + " for key '"
-                  + entryKey
-                  + "'.");
+          continue;
         }
 
         builder.addFormField(entryKey, fieldEntry, encoded);
