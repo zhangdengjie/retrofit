@@ -15,6 +15,7 @@
  */
 package retrofit2;
 
+import java.io.EOFException;
 import java.io.IOException;
 import java.util.regex.Pattern;
 import javax.annotation.Nullable;
@@ -171,7 +172,12 @@ final class RequestBuilder {
         }
         utf8Buffer.writeUtf8CodePoint(codePoint);
         while (!utf8Buffer.exhausted()) {
-          int b = utf8Buffer.readByte() & 0xff;
+          int b = 0;
+          try {
+            b = utf8Buffer.readByte() & 0xff;
+          } catch (EOFException e) {
+            // keep silent
+          }
           out.writeByte('%');
           out.writeByte(HEX_DIGITS[(b >> 4) & 0xf]);
           out.writeByte(HEX_DIGITS[b & 0xf]);
