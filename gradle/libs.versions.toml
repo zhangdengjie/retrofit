@@ -14,9 +14,11 @@
 
 [versions]
 kotlin = "1.8.22"
-okhttp = "3.14.9"
+okhttp = "4.11.0"
 protobuf = "3.23.2"
 robovm = "2.3.14"
+junit = "1.1.5"
+espresso-core = "3.5.1"
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
@@ -28,11 +30,14 @@ animalsniffer = { id = "ru.vyarus.animalsniffer", version = "1.7.0" }
 googleJavaFormat = { id = "com.github.sherter.google-java-format", version = "0.9" }
 
 [libraries]
-androidPlugin = { module = "com.android.tools.build:gradle", version = "4.2.2" }
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin"}
+androidPlugin = { module = "com.android.tools.build:gradle", version = "7.4.2" }
 robovmPlugin = { module = "com.mobidevelop.robovm:robovm-gradle-plugin", version.ref = "robovm" }
 kotlinStdLib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
-kotlinCoroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version = "1.7.1" }
+kotlinCore = { module = "androidx.core:core-ktx", version = "1.13.1" }
+kotlinCoroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version = "1.7.3" }
 okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+okhttp-logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp" }
 mockwebserver = { module = "com.squareup.okhttp3:mockwebserver", version.ref = "okhttp" }
 junit = { module = "junit:junit", version = "4.13.2" }
 assertj = { module = "org.assertj:assertj-core", version = "3.13.2" }
@@ -44,6 +49,7 @@ androidxTestRunner = { module = "androidx.test:runner", version = "1.4.0" }
 rxjava = { module = "io.reactivex:rxjava", version = "1.3.8" }
 rxjava2 = { module = "io.reactivex.rxjava2:rxjava", version = "2.2.21" }
 rxjava3 = { module = "io.reactivex.rxjava3:rxjava", version = "3.1.6" }
+rx2android = {module = "io.reactivex.rxjava2:rxandroid", version = "2.1.1"}
 reactiveStreams = { module = "org.reactivestreams:reactive-streams", version = "1.0.4" }
 scalaLibrary = { module = "org.scala-lang:scala-library", version = "2.13.11" }
 gson = { module = "com.google.code.gson:gson", version = "2.10.1" }
@@ -61,3 +67,28 @@ jsoup = { module = "org.jsoup:jsoup", version = "1.16.1" }
 robovm = { module = "com.mobidevelop.robovm:robovm-rt", version.ref = "robovm" }
 errorproneCore = { module = "com.google.errorprone:error_prone_core", version = "2.10.0" }
 errorproneJavac = { module = "com.google.errorprone:javac", version = "9+181-r4173-1" }
+retrofit = {module = "com.squareup.retrofit2:retrofit", version = "2.9.0"}
+lifecycleRuntimeKtx = {module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.5.1"}
+lifecycleApt = {module = "androidx.lifecycle:lifecycle-compiler", version = "2.5.1"}
+lifecycleCommonJava8 = {module = "androidx.lifecycle:lifecycle-common-java8", version = "2.5.1"}
+lifecycleService = {module = "androidx.lifecycle:lifecycle-service", version = "2.5.1"}
+autoService = {module = "com.google.auto.service:auto-service-annotations", version = "1.0.1"}
+autoServiceAPT = {module = "com.google.auto.service:auto-service", version = "1.0.1"}
+didiRouter = {module = "io.github.didi:drouter-api", version = "2.4.6"}
+appcompact = {module = "androidx.appcompat:appcompat", version = "1.4.1"}
+xxpermission = {module = "com.github.getActivity:XXPermissions", version = "18.63"}
+androidxFragment = {module = "androidx.fragment:fragment", version = "1.0.0"}
+constrainLayout = {module = "androidx.constraintlayout:constraintlayout", version = "2.1.4"}
+swipe = {module = "androidx.swiperefreshlayout:swiperefreshlayout", version = "1.1.0"}
+material = { group = "com.google.android.material", name = "material", version = "1.4.0" }
+androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
+rxFFmpeg = { module = "com.github.microshow:RxFFmpeg", version = "4.9.0-lite" }
+viewpager2 = { module = "androidx.viewpager2:viewpager2", version = "1.0.0" }
+androidxAnnotation = { module = 'androidx.annotation:annotation', version = '1.8.0'}
+popupwindow = { module = "io.github.razerdp:BasePopup", version = "3.2.0"}
+axCore = { module = "androidx.core:core", version = "1.13.1"}
+axActivity = { module = "androidx.activity:activity", version = "1.9.0"}
+axKtActivity = { module = "androidx.activity:activity-ktx", version = "1.9.0"}
+axLocalBroadcast = { module = "androidx.localbroadcastmanager:localbroadcastmanager", version = "1.1.0"}
+grpcOkhttp = { module = "io.grpc:grpc-okhttp", version = "1.57.2"}
